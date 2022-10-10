@@ -1,9 +1,6 @@
 
-
-## Requirements
-```
-pip install gdown # Google Drive Donwloader
-```
+## Reference
+Our code is highly referenced the codebase of [PointNeXt](https://github.com/guochengqian/PointNeXt) and [openpoints](https://github.com/guochengqian/openpoints)
 
 ## Installation
 - CUDA 11.3 is required
@@ -16,6 +13,7 @@ source install.sh
 ## Data
 - S3DIS Dataset
     ```bash
+    $ pip install gdown # Google Drive Donwloader
     $ mkdir -p data/S3DIS/
     $ cd data/S3DIS
     $ gdown https://drive.google.com/uc?id=1MX3ZCnwqyRztG1vFRiHkKTz68ZJeHS4Y
