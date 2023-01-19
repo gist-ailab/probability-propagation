@@ -3,7 +3,6 @@
 pip install gdown # Google Drive Donwloader
 ```
 
-
 ## Installation
 - CUDA 11.3 is required
 ```
@@ -12,16 +11,15 @@ cd PointNeXt
 source install.sh
 ```
 
-
 ## Data
 - S3DIS Dataset
     ```bash
+    $ pip install gdown # Google Drive Donwloader
     $ mkdir -p data/S3DIS/
     $ cd data/S3DIS
     $ gdown https://drive.google.com/uc?id=1MX3ZCnwqyRztG1vFRiHkKTz68ZJeHS4Y
     $ tar -xvf s3disfull.tar
     ```
-
 
 ## RUN
 ```bash
@@ -45,3 +43,7 @@ else:
     # interpolate logits by nearest neighbor
     all_logits = all_logits[reverse_idx_part][voxel_idx][reverse_idx]
 ```
+
+
+## Reference
+Our code is highly referenced the codebase of [PointNeXt](https://github.com/guochengqian/PointNeXt) and [openpoints](https://github.com/guochengqian/openpoints)
