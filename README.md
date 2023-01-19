@@ -1,9 +1,8 @@
-
-
 ## Requirements
 ```
 pip install gdown # Google Drive Donwloader
 ```
+
 
 ## Installation
 - CUDA 11.3 is required
@@ -13,6 +12,7 @@ cd PointNeXt
 source install.sh
 ```
 
+
 ## Data
 - S3DIS Dataset
     ```bash
@@ -21,6 +21,7 @@ source install.sh
     $ gdown https://drive.google.com/uc?id=1MX3ZCnwqyRztG1vFRiHkKTz68ZJeHS4Y
     $ tar -xvf s3disfull.tar
     ```
+
 
 ## RUN
 ```bash

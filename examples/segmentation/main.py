@@ -545,7 +545,7 @@ def test(model, data_list, cfg, num_votes=1):
     os.makedirs(cfg.save_path, exist_ok=True)
 
     gravity_dim = cfg.datatransforms.kwargs.gravity_dim
-    nearest_neighbor = cfg.get('test_mode', 'multi_voxel') == 'nearest_neighbor'
+
     for cloud_idx, data_path in enumerate(data_list):
         logging.info(f'Test [{cloud_idx}]/[{len_data}] cloud')
         cm = ConfusionMatrix(num_classes=cfg.num_classes, ignore_index=cfg.ignore_index)
@@ -556,6 +556,7 @@ def test(model, data_list, cfg, num_votes=1):
 
         len_part = len(idx_points)
         nearest_neighbor = len_part == 1
+        
         pbar = tqdm(range(len(idx_points)))
         for idx_subcloud in pbar:
             pbar.set_description(f"Test on {cloud_idx}-th cloud [{idx_subcloud}]/[{len_part}]]")
@@ -591,8 +592,8 @@ def test(model, data_list, cfg, num_votes=1):
                 from openpoints.dataset.vis3d import vis_points, vis_multi_points
                 vis_multi_points([coord, coord_part], labels=[label.cpu().numpy(), logits.argmax(dim=1).squeeze().cpu().numpy()])
                 """
-
             all_logits.append(logits)
+            
         all_logits = torch.cat(all_logits, dim=0)
         if not cfg.dataset.common.get('variable', False):
             all_logits = all_logits.transpose(1, 2).reshape(-1, cfg.num_classes)
@@ -604,6 +605,12 @@ def test(model, data_list, cfg, num_votes=1):
         else:
             # interpolate logits by nearest neighbor
             all_logits = all_logits[reverse_idx_part][voxel_idx][reverse_idx]
+            
+            
+            
+            
+            
+            
         pred = all_logits.argmax(dim=1)
         if label is not None:
             cm.update(pred, label)
